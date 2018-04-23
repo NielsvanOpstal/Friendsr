@@ -1,15 +1,19 @@
 package com.example.niels.friendsr;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class FriendsAdapter extends ArrayAdapter<Friends> {
 
@@ -28,9 +32,15 @@ public class FriendsAdapter extends ArrayAdapter<Friends> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
         }
-        convertView.findViewById(R.id.imageView2);
-        Friends profile = friends.get(0);
-        setBackgroundResource();getContext().getResources().getDrawable(profile.getDrawableId());
+
+
+        ImageView imageView = convertView.findViewById(R.id.imageView2);
+        TextView textView = convertView.findViewById(R.id.textView2);
+        Friends profile = friends.get(position);
+        Log.d("adapter", profile.getName());
+        imageView.setImageResource(profile.getDrawableId());
+        textView.setText(profile.getName());
+
 
         return convertView;
     }
