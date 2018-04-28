@@ -1,10 +1,8 @@
 package com.example.niels.friendsr;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +20,7 @@ public class FriendsAdapter extends ArrayAdapter<Friends> {
     public FriendsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Friends> objects) {
         super(context, resource, objects);
 
+        // Puts the list of friends from the main activity in the arraylist made adove
         friends = objects;
 
     }
@@ -33,11 +32,10 @@ public class FriendsAdapter extends ArrayAdapter<Friends> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
         }
 
-
+        // makes and fills the items for the gridview
         ImageView imageView = convertView.findViewById(R.id.imageView2);
         TextView textView = convertView.findViewById(R.id.textView2);
         Friends profile = friends.get(position);
-        Log.d("adapter", profile.getName());
         imageView.setImageResource(profile.getDrawableId());
         textView.setText(profile.getName());
 
